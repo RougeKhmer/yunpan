@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE struts PUBLIC
+            "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+            "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+    <!-- action中使用的service将由spring自动按类型注入 -->
+    <constant name="struts.objectFactory.spring.autoWire" value="type"></constant>
+    
+    <constant name="struts.devMode" value="true"></constant>
+    <constant name="struts.multipart.maxSize" value="10000000000000"></constant>
+    
+	<package name="yunpan"  extends="struts-default">
+	
+			<action name="requestin" class="com.test.action.LoginAction" method="execute">
+				<result name="success">/WEB-INF/jsp/login.jsp</result>
+			</action>
+			
+			<action name="requestup" class="com.test.action.LogupAction" method="execute">
+				<result name="success">/WEB-INF/jsp/logup.jsp</result>
+			</action>
+			
+			<action name="requestout" class="com.test.action.LogoutAction" method="execute">
+				<result name="success">/index.jsp</result>
+			</action>
+			
+			<action name="autologin" class="com.test.action.AutoLoginAction" method="autoLogin">
+				<result type="chain" name="success">searchUserfile</result>
+				<result type="redirect" name="input">${pageContext.request.contextPath}/requestin.action</result>
+			</action>
+			
+			<action name="searchUserfile" class="com.test.action.SearchUserFileAction" method="execute">
+				<result name="success">/WEB-INF/jsp/userhome.jsp</result>
+				<result name="input">/index.jsp</result>
+			</action>
+			
+			<action name="searchfile" class="com.test.action.SearchFileAction" method="execute">
+				<result name="success">/WEB-INF/jsp/showsearchfiles.jsp</result>
+				<result name="input">/index.jsp</result>
+			</action>
+			
+			<action name="listfiles" class="com.test.action.SearchFileAction" method="listFiles">
+				<result name="success">/WEB-INF/jsp/showsearchfiles.jsp</result>
+				<result name="input">/index.jsp</result>
+			</action>
+			
+			<action name="logup" class="com.test.action.LogupAction" method="logup">
+				<result name="success">/WEB-INF/jsp/login.jsp</result>
+				<result name="error">/WEB-INF/jsp/logup.jsp</result>
+				<result name="input">/WEB-INF/jsp/logup.jsp</result>
+			</action>
+			
+			<action name="login" class="com.test.action.LoginAction" method="login">
+				<result type="chain" name="success">searchUserfile</result>
+				<result name="error">/message.jsp</result>
+				<result name="input">/WEB-INF/jsp/login.jsp</result>
+			</action>
+			
+			<action name="download" class="com.test.action.DownloadAction" method="download">
+				<result name="success">/message.jsp</result>
+				<result name="input">/message.jsp</result>
+			</action>
+			
+			<action name="upload" class="com.test.action.UploadAction" method="upload">
+				<result type="chain" name="success">searchUserfile</result>
+				<result name="error">/message.jsp</result>
+			</action>
+			
+			<action name="changefilestatus" class="com.test.action.ChangeFileStatusAction" method="changeFileStatus">
+			    <result type="chain" name="success">searchUserfile</result>
+			    <result name="input">/message.jsp</result>
+			</action>
+			
+			<action name="deletefile" class="com.test.action.DeleteFileAction" method="deleteFile">
+			    <result type="chain" name="success">searchUserfile</result>
+			    <result name="error">/message.jsp</result>
+			</action>
+			
+			<action name="shutdown" class="com.test.action.ShutDown">
+			    <result name="success">/index.jsp</result>
+			</action>
+			
+	</package>
+</struts>

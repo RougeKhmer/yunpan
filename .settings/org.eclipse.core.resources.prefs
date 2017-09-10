@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/com/test/action/AutoLoginAction.java=UTF-8
+encoding//src/com/test/action/ChangeFileStatusAction.java=UTF-8
+encoding//src/com/test/action/DeleteFileAction.java=UTF-8
+encoding//src/com/test/action/DownloadAction.java=UTF-8
+encoding//src/com/test/action/LoginAction.java=UTF-8
+encoding//src/com/test/action/LogupAction.java=UTF-8
+encoding//src/com/test/action/SearchFileAction.java=UTF-8
+encoding//src/com/test/action/SearchUserFileAction.java=UTF-8
+encoding//src/com/test/action/UploadAction.java=UTF-8
